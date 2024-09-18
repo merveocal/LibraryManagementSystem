@@ -18,7 +18,7 @@ JOIN Category C ON C.ID = B.CategoryID
 
 
 
---Ben bir view ile bir tablo oluþturmuþtum. Daha sonra bu tabloyu kalici bir tablo haline getirmek için ManagementSystem2 adini vererek bir tablo olusturdum. Böylece view kullanmadan ya da join islemi yapmadan 
+--Ben bir view ile bir tablo oluşturmuştum. Daha sonra bu tabloyu kalici bir tablo haline getirmek için ManagementSystem2 adini vererek bir tablo olusturdum. Böylece view kullanmadan ya da join islemi yapmadan 
 --select islemi ile tek seferde tabloyu cagırabiliyorum
 
 select * INTO ManagementSystem2 from VW_ManagementSystem
@@ -35,7 +35,7 @@ select * from #Gecici
 
 
 
- -- Kitap adýna göre, yazari, yayınevini,türünü ve  rafta kaç adet olduðunu getiren stored procedure 'yi olusturalim
+ -- Kitap adına göre, yazari, yayınevini,türünü ve  rafta kaç adet olduðunu getiren stored procedure 'yi olusturalim
  CREATE procedure SPBOOKS
  @BookName as varchar(50)
  as
@@ -68,7 +68,7 @@ select * from #Gecici
 
 
 
--- View oluþturma, viewler fiziksel verileri saklamaz onun yerine mevcut tablolardan sorgu yapmamýzý saðlayan bir yapý. Aþaðýda bir view oluþturun
+-- Viewler fiziksel verileri saklamaz onun yerine mevcut tablolardan sorgu yapmamızı sağlayan bir yapı. aşağıda bir view oluşturun
 create view VW_ManagementSystem
 as 
 select P.ID, CONCAT(S.StudentName, ' ', S.StudentSurname) Name_surname, S.StudentNo, S.Gender,	S.Birthdate, S.Class, CONCAT(A.AuthorName, ' ', A.AuthorSurname) Authors, 
@@ -80,13 +80,13 @@ JOIN PUBLISHING_HOUSE PB ON PB.ID = B.PblsHouseID
 JOIN Category C ON C.ID = B.CategoryID
 
 
---bir view nasýl çaðrýlýr
+--bir view nasıl çağrılır
 select * from VW_ManagementSystem
 
 
 
 
---öðrenci numarasýna göre bilgileri getiren bir Inline table valued function oluþturacaðým.
+--öðrenci numarasına göre bilgileri getiren bir Inline table valued function oluşturacağım.
 create function dbo.StudentNo(@number as int)
 returns table
 as
@@ -94,7 +94,7 @@ return
 Select * from VW_ManagementSystem where StudentNo = @number
 
 
---ýnlýne table values function nasýl çaðrýlýr
+--Inline table values function nasıl çağrılır
 select * from  dbo.StudentNo(312)
 
 
@@ -102,7 +102,7 @@ select * from  dbo.StudentNo(312)
 
 		-- TRIGGER 'LARLA ÝLGÝLÝ ÖRNEK SORGULAR
 
---Bir öðrenci kitap aldýðýnda alýþ tarihini  ve son teslim tarihini de 15 gün ileri tarih vererek güncellesin.
+--Bir öğrenci kitap aldığında alış tarihini  ve son teslim tarihini de 15 gün ileri tarih vererek güncellesin.
 
 create trigger ProcessDate
 on PROCESS
@@ -130,7 +130,7 @@ select * from PROCESS order by ID DESC
 
 
 
---Trigger örnek 2 => Burada Books tablosunu her veri eklediðinde bana eklediðim verinin adýný, raf tarihin, sayfa sayýsýný ve kaç adet olduklarýný göstersin göater
+--Trigger örnek 2 => Burada Books tablosunu her veri eklediğinde bana eklediğim verinin adını, raf tarihin, sayfa sayısını ve kaç adet olduklarını göstersin
 create trigger Current2
 on BOOKS
 AFTER INSERT
@@ -148,13 +148,13 @@ BEGIN
 	select @BookName BookName, @ShelDate ShelfDate, @PageCount_ PageCount_ ,@BookCount BookCount
 end
 
-INSERT BOOKS VALUES(21, 'Kuyucaklý Yusuf',9, 1,5,300, '458-895-6325-65-4', getdate(), 1 )
+INSERT BOOKS VALUES(21, 'Kuyucaklı Yusuf',9, 1,5,300, '458-895-6325-65-4', getdate(), 1 )
 
 
 
 
--- Trigger örnek 3 => Ýþlem her güncellendiðinde ya da silindiðinde ben o silinen ya da güncellenen iþlemi baþka bir tabloda tutma iþlemi yapacaðým
-
+-- Trigger örnek 3 => işlem her güncellendiðinde ya da silindiðinde ben o silinen ya da güncellenen işlemi başka bir tabloda tutma işlemi yapacağım
+lemi
 create trigger TRG_PROCESS_UP_DEL
 ON PROCESS
 AFTER UPDATE, DELETE
@@ -196,20 +196,17 @@ select * from Process_Log
 
 
 
--- Þu an aþaðýda sorgulama iþlemleri yapacaðým
-SELECT * FROM VW_ManagementSystem
-
--- Hangi kategoriden toplam kaç tane var, bunu grup þeklinde getireceðim
+-- Hangi kategoriden toplam kaç tane var, bunu grup şeklinde getireceğim
 select CategoryName ,count(*) Roman from VW_ManagementSystem group by CategoryName
 
 
 
--- sayfa sayýsý en fazla olan kitap
+-- sayfa sayısı en fazla olan kitap
 select top 1* from VW_ManagementSystem order by  PageCount_ desc
 
 
 
--- Addresi Ýstanbul/Beylikdüzü de olan kitaplarý getireceðim
+-- Addresi İstanbul/Beylikdüzü de olan kitapları getireceğim
 select BookName from VW_ManagementSystem where Address_ = 'Ýstanbul/Beylikdüzü'
 
 
