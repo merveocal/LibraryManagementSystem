@@ -1,7 +1,7 @@
 # LibraryManagementSystem
 SQL ile Kütüphane Yönetim Sistemini geliştirdim. İşlem, öğrenci, kitap, yazar, yayın evi, kategori tablolarını oluşturdum.Daha sonrasında da  tablolara veri ekledim. **Trigger, stored procedure, view ve Inline table valued function** oluşturdum ve çeşitli sorgular da yaptım. 
 
-*Oluşturduğum kalıcı tablomu **Excel**'e bu aktardım ve onu da paylaştım inceleyebilirsiniz*
+*Oluşturduğum kalıcı tablomu **Excel**'e aktardım ve onu da paylaştım inceleyebilirsiniz*
 
 *Library Management System veri tabanımın **.bak** dosyasını da aldım onu da burada paylaştım. Management Studio 'ya yükleyip siz de üzerinde sorgular deneyebilirsiniz* 
 
@@ -17,7 +17,7 @@ Veri ekleme işlemlerini gerçekleştirmek için 6 adet tablo oluşturdum
 - PUBLISHING_HOUSE
 - CATEGORY
 
-NOT: İsteğe bağlı olarak foreign key ve identıty kullanabilirsiniz. Foreign key de kullandığınızda bağlantılı olan tablodan kolayca bir işlem silemeyebilirsiniz ona dikkat ediniz
+NOT: İsteğe bağlı olarak foreign key ve identity kullanabilirsiniz. Foreign key de kullandığınızda bağlantılı olan tablodan kolayca bir işlem silemeyebilirsiniz ona dikkat ediniz
 
 
 ## Oluşturduğum veri sorguları konularu aşağıdaki şekildedir;
