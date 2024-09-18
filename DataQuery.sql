@@ -1,11 +1,11 @@
--- Mevcut tablolar görüntelemek için;
+-- Mevcut tablolar gÃ¶rÃ¼ntelemek iÃ§in;
 SELECT * FROM SYS.tables
 
--- dilini türkçe yapmak için kullanılır
+-- dilini tÃ¼rkÃ§e yapmak iÃ§in kullaniliyor
 set language turkish
 
 
--- Tabloları oluşturuldu. Şimdi JOIN işlemi ile birleştirerek bir sorgu yazacağım
+-- Tablolari olusturuldu. Simdi JOIN islemi ile birlestirerek bir sorgu yazacagÄ±m
 
 select P.ID, CONCAT(S.StudentName, ' ', S.StudentSurname) Name_surname, S.StudentNo, S.Gender,	S.Birthdate, S.Class, CONCAT(A.AuthorName, ' ', A.AuthorSurname) Authors, 
 B.BookName, P.RegDate, P.EndDate, C.CategoryName, PB.Name_, B.PageCount_, B.ISBNno, PB.Address_
@@ -18,15 +18,15 @@ JOIN Category C ON C.ID = B.CategoryID
 
 
 
---Ben bir view ile bir tablo oluşturmuştum. Daha sonra bu tabloyu kalıcı bir tablo haline getirmek için ManagementSystem2 adını vererek bir tablo oluşturdum. Böylece view kullanmadan ya da joın işlemi yapmadan 
---select işlemi ile tek seferde tabloyu çağırabiliyorum
+--Ben bir view ile bir tablo oluÃ¾turmuÃ¾tum. Daha sonra bu tabloyu kalici bir tablo haline getirmek iÃ§in ManagementSystem2 adini vererek bir tablo olusturdum. BÃ¶ylece view kullanmadan ya da join islemi yapmadan 
+--select islemi ile tek seferde tabloyu cagÄ±rabiliyorum
 
 select * INTO ManagementSystem2 from VW_ManagementSystem
 
 select * from ManagementSystem2
 
 
---NOT: Ben kalıcı tablo oluşturdum ama geçici tablo da oluşturulur
+--NOT: Ben kalici tablo olusturdum ama geÃ§ici tablo da olusturulur
 select *into #Gecici from ManagementSystem2
 
 select * from #Gecici
@@ -35,7 +35,7 @@ select * from #Gecici
 
 
 
- -- Kitap adına göre, yazarı, yayıevini,türünü ve  rafta kaç adet olduğunu getiren stored procedure 'yi oluşturalım
+ -- Kitap adÃ½na gÃ¶re, yazari, yayÄ±nevini,tÃ¼rÃ¼nÃ¼ ve  rafta kaÃ§ adet olduÃ°unu getiren stored procedure 'yi olusturalim
  CREATE procedure SPBOOKS
  @BookName as varchar(50)
  as
@@ -46,15 +46,15 @@ select * from #Gecici
  END
 
 
--- Stored Procedure'ü Çağırma işlemi
- EXEC SPBOOKS 'CEMİLE'
+-- Stored Procedure'Ã¼ cagÄ±rma islemi
+ EXEC SPBOOKS 'CEMÃLE'
 
 
 
 
 
 
- --Stored Procedure işe öğrenci adına göre kaç kitap aldığını sorgusunu getirelim
+ --Stored Procedure ile Ã¶grenci adÄ±na gÃ¶re kaÃ§ kitap adÄ±ÄŸÄ±nÄ±n sorgusunu getirelim
 
  create proc SP_PROCESS
  @StudentName_surname as nvarchar(50)
@@ -68,7 +68,7 @@ select * from #Gecici
 
 
 
--- View oluşturma, viewler fiziksel verileri saklamaz onun yerine mevcut tablolardan sorgu yapmamızı sağlayan bir yapı. Aşağıda bir view oluşturun
+-- View oluÃ¾turma, viewler fiziksel verileri saklamaz onun yerine mevcut tablolardan sorgu yapmamÃ½zÃ½ saÃ°layan bir yapÃ½. AÃ¾aÃ°Ã½da bir view oluÃ¾turun
 create view VW_ManagementSystem
 as 
 select P.ID, CONCAT(S.StudentName, ' ', S.StudentSurname) Name_surname, S.StudentNo, S.Gender,	S.Birthdate, S.Class, CONCAT(A.AuthorName, ' ', A.AuthorSurname) Authors, 
@@ -80,13 +80,13 @@ JOIN PUBLISHING_HOUSE PB ON PB.ID = B.PblsHouseID
 JOIN Category C ON C.ID = B.CategoryID
 
 
---bir view nasıl çağrılır
+--bir view nasÃ½l Ã§aÃ°rÃ½lÃ½r
 select * from VW_ManagementSystem
 
 
 
 
---öğrenci numarasına göre bilgileri getiren bir Inline table valued function oluşturacağım.
+--Ã¶Ã°renci numarasÃ½na gÃ¶re bilgileri getiren bir Inline table valued function oluÃ¾turacaÃ°Ã½m.
 create function dbo.StudentNo(@number as int)
 returns table
 as
@@ -94,15 +94,15 @@ return
 Select * from VW_ManagementSystem where StudentNo = @number
 
 
---ınlıne table values function nasıl çağrılır
+--Ã½nlÃ½ne table values function nasÃ½l Ã§aÃ°rÃ½lÃ½r
 select * from  dbo.StudentNo(312)
 
 
 
 
-		-- TRIGGER 'LARLA İLGİLİ ÖRNEK SORGULAR
+		-- TRIGGER 'LARLA ÃLGÃLÃ Ã–RNEK SORGULAR
 
---Bir öğrenci kitap aldığında alış tarihini  ve son teslim tarihini de 15 gün ileri tarih vererek güncellesin.
+--Bir Ã¶Ã°renci kitap aldÃ½Ã°Ã½nda alÃ½Ã¾ tarihini  ve son teslim tarihini de 15 gÃ¼n ileri tarih vererek gÃ¼ncellesin.
 
 create trigger ProcessDate
 on PROCESS
@@ -116,7 +116,7 @@ BEGIN
 END
 
 
---trigger 'ı çalıştıralım
+--trigger 'Ã½ Ã§alÃ½Ã¾tÃ½ralÃ½m
 select * from PROCESS
 
 -- tarihleri girmedim otomatik kendi girecek
@@ -130,7 +130,7 @@ select * from PROCESS order by ID DESC
 
 
 
---Trigger örnek 2 => Burada Books tablosunu her veri eklediğinde bana eklediğim verinin adını, raf tarihin, sayfa sayısını ve kaç adet olduklarını göstersin göater
+--Trigger Ã¶rnek 2 => Burada Books tablosunu her veri eklediÃ°inde bana eklediÃ°im verinin adÃ½nÃ½, raf tarihin, sayfa sayÃ½sÃ½nÃ½ ve kaÃ§ adet olduklarÃ½nÃ½ gÃ¶stersin gÃ¶ater
 create trigger Current2
 on BOOKS
 AFTER INSERT
@@ -148,12 +148,12 @@ BEGIN
 	select @BookName BookName, @ShelDate ShelfDate, @PageCount_ PageCount_ ,@BookCount BookCount
 end
 
-INSERT BOOKS VALUES(21, 'Kuyucaklı Yusuf',9, 1,5,300, '458-895-6325-65-4', getdate(), 1 )
+INSERT BOOKS VALUES(21, 'KuyucaklÃ½ Yusuf',9, 1,5,300, '458-895-6325-65-4', getdate(), 1 )
 
 
 
 
--- Trigger örnek 3 => İşlem her güncellendiğinde ya da silindiğinde ben o silinen ya da güncellenen işlemi başka bir tabloda tutma işlemi yapacağım
+-- Trigger Ã¶rnek 3 => ÃÃ¾lem her gÃ¼ncellendiÃ°inde ya da silindiÃ°inde ben o silinen ya da gÃ¼ncellenen iÃ¾lemi baÃ¾ka bir tabloda tutma iÃ¾lemi yapacaÃ°Ã½m
 
 create trigger TRG_PROCESS_UP_DEL
 ON PROCESS
@@ -180,13 +180,13 @@ IF @INSERTEDCOUNT= 0 AND @DELETEDCOUNT >0
 end
 
 SELECT * FROM PROCESS
--- PROCESS tablosunda ID 'si 1 olan satırın RegDate'ni değiştireceğim ve sonra gidip eski halini Process_Log dosyasında görüntüleyceğim
+-- PROCESS tablosunda ID 'si 1 olan satÃ½rÃ½n RegDate'ni deÃ°iÃ¾tireceÃ°im ve sonra gidip eski halini Process_Log dosyasÃ½nda gÃ¶rÃ¼ntÃ¼leyceÃ°im
 --Eski Regdate:2024-12-23 
 --Yeni Regdate: 2023-11-14 
 update PROCESS set RegDate = '2023-11-14' where ID = 1
 
 
---buraya kayıdın güncellemeden önceki tarihi geldi
+--buraya kayÃ½dÃ½n gÃ¼ncellemeden Ã¶nceki tarihi geldi
 SELECT * FROM Process_Log
 
 select * from Process_Log
@@ -196,21 +196,21 @@ select * from Process_Log
 
 
 
--- Şu an aşağıda sorgulama işlemleri yapacağım
+-- Ãu an aÃ¾aÃ°Ã½da sorgulama iÃ¾lemleri yapacaÃ°Ã½m
 SELECT * FROM VW_ManagementSystem
 
--- Hangi kategoriden toplam kaç tane var, bunu grup şeklinde getireceğim
+-- Hangi kategoriden toplam kaÃ§ tane var, bunu grup Ã¾eklinde getireceÃ°im
 select CategoryName ,count(*) Roman from VW_ManagementSystem group by CategoryName
 
 
 
--- sayfa sayısı en fazla olan kitap
+-- sayfa sayÃ½sÃ½ en fazla olan kitap
 select top 1* from VW_ManagementSystem order by  PageCount_ desc
 
 
 
--- Addresi İstanbul/Beylikdüzü de olan kitapları getireceğim
-select BookName from VW_ManagementSystem where Address_ = 'İstanbul/Beylikdüzü'
+-- Addresi Ãstanbul/BeylikdÃ¼zÃ¼ de olan kitaplarÃ½ getireceÃ°im
+select BookName from VW_ManagementSystem where Address_ = 'Ãstanbul/BeylikdÃ¼zÃ¼'
 
 
 
