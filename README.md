@@ -5,7 +5,7 @@ SQL ile Kütüphane Yönetim Sistemini geliştirdim. İşlem, öğrenci, kitap, 
 
 *Library Management System veri tabanımın **.bak** dosyasını da aldım onu da burada paylaştım. Management Studio 'ya yükleyip siz de üzerinde sorgular deneyebilirsiniz* 
 
-# Veri tabanı kurulumu
+## Veri tabanı oluşturma
 İşlemleri gerçekleştirmek için **Library Management System** isimli bir veri tabanı oluşturdum
 
 ## Tablo oluşturma
@@ -20,7 +20,7 @@ Veri ekleme işlemlerini gerçekleştirmek için 6 adet tablo oluşturdum
 NOT: İsteğe bağlı olarak foreign key ve identity kullanabilirsiniz. Foreign key de kullandığınızda bağlantılı olan tablodan kolayca bir işlem silemeyebilirsiniz ona dikkat ediniz
 
 
-## Oluşturduğum veri sorguları konularu aşağıdaki şekildedir;
+## Oluşturduğum veri sorguları konuları aşağıdaki şekildedir;
 -  Joın işlemi
 -  JOIN işlemlerini bir **view** olarak oluşturdum
 -  Kalıcı tablo işlemi
