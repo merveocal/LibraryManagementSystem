@@ -3,11 +3,11 @@ CREATE DATABASE LibraryManagementSystem2
 
 use LibraryManagementSystem2
 
--- NOT: Tablolarý oluþtururken IDENTTIY kullanmak istemedim ama siz kullanabilirsiniz.,
---Ayrýca trigger oluþtururken bazý iþlemlerde foreign keyden dolayo iþlem çalýþamýyor olabiliyor onu da isteðe baðlý oluþturabilirsiniz
+-- NOT: Tablolaru oluÅŸtururken IDENTTIY kullanmak istemedim ama siz kullanabilirsiniz.,
+--AyrÄ±ca trigger oluÅŸtururken bazÄ± iÅŸlemlerde foreign keyden dolayÄ± iÅŸlem Ã§alÄ±ÅŸamÄ±yor olabiliyor onu da isteÄŸe baÄŸlÄ± oluÅŸturabilirsiniz
 
 
---STUDENTS tablosu oluþturma
+--STUDENTS tablosu oluÅŸturma
 create table STUDENTS
 (	
 	ID INT PRIMARY KEY,
@@ -21,7 +21,7 @@ create table STUDENTS
 )
 
 
---AUTHORS tablosu oluþturun
+--AUTHORS tablosu oluÅŸturma
 create table AUTHORS
 (
 	ID INT PRIMARY KEY,
@@ -31,7 +31,7 @@ create table AUTHORS
 )
 
 
--- Category tablosunu oluþturun
+-- Category tablosu oluÅŸturma
 Create table Category 
 (
 	ID INT PRIMARY KEY,
@@ -39,7 +39,7 @@ Create table Category
 )
 
 
---PUBLISHING_HOUSE tablosunu oluþturun
+--PUBLISHING_HOUSE tablosunu oluÅŸturma
 Create table PUBLISHING_HOUSE
 (
 	ID INT PRIMARY KEY,
@@ -50,7 +50,7 @@ Create table PUBLISHING_HOUSE
 
 
 
--- BOOKS tablosunu oluþturun
+-- BOOKS tablosunu oluÅŸturma
 Create table BOOKS
 (
 	ID INT PRIMARY KEY,
@@ -69,7 +69,7 @@ Create table BOOKS
 
 
 
--- PROCESS tablosunu oluþturun
+-- PROCESS tablosunu oluÅŸturma
 create table PROCESS
 (
 	ID INT PRIMARY KEY,
@@ -82,7 +82,7 @@ create table PROCESS
 )
 
 
--- Bu tabloyu trigger iþlemlerinde kullanmak için oluþturacaðým
+-- Bu tabloyu trigger iÅŸlemlerinde kullanmak iÃ§in oluÅŸturacaÄŸÄ±m
 create table Process_Log
 (
 	ID INT, 
